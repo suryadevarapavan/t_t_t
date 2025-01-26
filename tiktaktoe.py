@@ -1,5 +1,6 @@
 p1=[]
 p2=[]
+#mg is a magic square used for checking which player wins.
 mg=[[8,1,6],[3,5,7],[4,9,2]]
 A=[[" "," "," "],[" "," "," "],[" "," "," "]]
 i=0
