@@ -1,4 +1,5 @@
 import random
+res=0
 i=0
 x=[]
 o=[]
@@ -6,9 +7,40 @@ mg=[[8,1,6],[3,5,7],[4,9,2]]
 print(mg)
 A=[[1,2,3],[4,5,6],[7,8,9]]
 i=0
-def com():
-    if i==1:
-        print(random.choice())
+def pos(y):
+    print("working")
+    for i in range(len(mg)):
+        for j in range(len(mg)):
+            if mg[i][j]==y:
+                return(i,j)
+def com(i):
+    c=[1,5]
+    if i==0:
+        c1=random.choice(c)
+        if c1==1:
+            A[0][0]="X"
+            x.append(mg[0][0])
+            mg[0][0] = None
+        elif c1==5:
+            x.append(mg[1][1])
+            mg[1][1] = None
+            A[1][1]="X"
+    elif i==1:
+        if A[2][2]==9:
+            x.append(mg[2][2])
+            mg[2][2] = None
+            A[2][2]="X"
+        else:
+            x.append(mg[0][2])
+            mg[0][2]=None
+            A[0][2]="X"
+    else:
+        if(win(x)):
+            m,n=pos(res)
+            x.append(mg[m][n])
+            mg[m][n]=None
+            A[m][n]="X"
+                
     
 def chk():
     if((sum(x)>=15 and len(x)>=3)and ("X"==A[0][0]==A[1][1]==A[2][2] or "X"==A[0][0]==A[0][1]==A[0][2] or "X"==A[1][0]==A[1][1]==A[1][2] or "X"==A[2][0]==A[2][1]==A[2][2] or "X"==A[0][0]==A[1][0]==A[2][0] or "X"==A[0][1]==A[1][1]==A[2][1] or "X"==A[0][2]==A[1][2]==A[2][2] or "X"==A[0][2]==A[1][1]==A[2][0])):
@@ -26,11 +58,14 @@ def disp():
     print("___________")
 def win(arr):
     cn=0
+    global res
+    res=15-sum(arr) 
     for i in range(len(mg)):
-        if(15-sum(arr) in mg[i]):
+        if(res in mg[i]):
             cn=1
     if cn==1:
         print("CAN WIN")
+        print(res)
         return True
     else:
         print("CANT WIN")
@@ -74,20 +109,24 @@ def it(a,arr):
         arr.append(mg[2][2])
         mg[2][2] = None
 while(1):
+    com(i)
+    global res
+    print(res)
     disp()
-    if i > 3:
+    if i > 4:
         print("GAME 0VER")
         break
-    it("X",x)
-    #win(x)
-    disp()
-    if(chk()==True):
+    if(chk()):
         break
-    it("O",o)
-    #win(o)
+    #it("X",x)
+    win(x)
     disp()
     if(chk()):
         break
-    i=+1
-    #com()
+    it("O",o)
+    win(o)
+    disp()
+    if(chk()):
+        break
+    i+=1
         
