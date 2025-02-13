@@ -1,3 +1,4 @@
+#This program has "X" as AI
 import random
 res=0
 i=0
