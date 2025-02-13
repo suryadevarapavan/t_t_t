@@ -1,3 +1,4 @@
+#This program has two player game
 i=0
 x=[]
 o=[]
