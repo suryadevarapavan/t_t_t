@@ -10,4 +10,5 @@ ttt-AI.py-This python file has one player tic-tac-toe game and other player is C
 </br>
 
 <br>
+
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
